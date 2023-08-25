@@ -28,13 +28,22 @@ function hexToRGB(hex) {
   return [r, g, b];
 }
 
-function colorSubmissionHandler() {
-  const colorInput = document.querySelector("#color").value;
-  const colorRGB = hexToRGB(colorInput);
+function colorSubmissionHandler(colorHex) {
+  const colorRGB = hexToRGB(colorHex);
   const colorBucket = getColorBucket(colorRGB);
   //TODO: Do something with the colorBucket
   console.log(colorBucket);
 } 
+
+function radioSubmissionHandler() {
+  const Alloutput = document.querySelectorAll("input:checked");
+  let answersValue = 0;
+  
+  Alloutput.forEach(output => {
+    answersValue += parseInt(output.value);
+  })
+  console.log(answersValue);
+}
 
 //UI Logic
 function collapseHandler() {
@@ -60,6 +69,9 @@ window.addEventListener("load", function() {
   collapseHandler();
   form.addEventListener("submit", function (event){
     event.preventDefault();
-    colorSubmissionHandler()
+    const colorInput = document.querySelector("#color").value;
+
+    colorSubmissionHandler(colorInput);
+    radioSubmissionHandler();
   })
 })
