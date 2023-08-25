@@ -16,5 +16,10 @@ function collapseHandler() {
 }
 
 window.addEventListener("load", function() {
+  const form = this.document.querySelector("form");
+  
   collapseHandler();
+  form.addEventListener("submit", function (event){
+    event.preventDefault();
+  })
 })
