@@ -1,9 +1,17 @@
 function collapseHandler() {
-  const ButtonOne = document.querySelector("#headingOne > button");
-  const collapseOne = document.querySelector("#collapseOne");
-
-  ButtonOne.addEventListener("click", function() {
-    collapseOne.classList.toggle("show");
+  const buttons = document.querySelectorAll("button");
+  buttons.forEach(button => {
+    const target = document.querySelector(button.dataset.target);
+    
+    button.addEventListener("click", function() {
+      const toHide = document.querySelector(".show")
+      if (toHide) {
+        toHide.classList.toggle("show");
+      }
+      if (toHide !== target) {
+        target.classList.toggle("show");
+      }
+    })
   })
 }
 
