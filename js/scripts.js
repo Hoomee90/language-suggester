@@ -68,22 +68,32 @@ function showResults() {
   document.querySelector("#accordion").classList.add("hidden");
   
   console.log(answersValue);
+  answersValue = 0;
 }
 
 function formReset() {
   //Reset form entries
   document.querySelector("#color").value = "#000000";
   document.querySelector("#thoughts").innerHTML = "";
-  document.querySelector("#result-card").classList.add("hidden");
-  document.querySelector("#accordion").classList.remove("hidden");
+  
+  const radioButtons = document.querySelectorAll("input[type='radio']");
+  radioButtons.forEach(radio => {
+    radio.checked = false;
+  })
+  document.querySelector("#magicYes").checked = true;
+  document.querySelector("#godLogic").checked = true;
+  document.querySelector("#happyYes").checked = true;
+
   //Reset shown question
   const shownQuestion = document.querySelector(".show");
   if (shownQuestion) {
     shownQuestion.classList.remove("show");
   }
   document.querySelector("#collapseOne").classList.add("show");
-
-  answersValue = 0;
+  
+  //Show form
+  document.querySelector("#result-card").classList.add("hidden");
+  document.querySelector("#accordion").classList.remove("hidden");
 }
 
 window.addEventListener("load", function() {
