@@ -71,10 +71,17 @@ function showResults() {
 }
 
 function formReset() {
+  //Reset form entries
   document.querySelector("#color").value = "#000000";
   document.querySelector("#thoughts").innerHTML = "";
   document.querySelector("#result-card").classList.add("hidden");
   document.querySelector("#accordion").classList.remove("hidden");
+  //Reset shown question
+  const shownQuestion = document.querySelector(".show");
+  if (shownQuestion) {
+    shownQuestion.classList.remove("show");
+  }
+  document.querySelector("#collapseOne").classList.add("show");
 
   answersValue = 0;
 }
