@@ -64,10 +64,24 @@ function collapseHandler() {
 }
 
 function showResults() {
+  let resultsTitle = document.querySelector("#result-title");
+  let resultsText = document.querySelector("#result-text");
   document.querySelector("#result-card").classList.remove("hidden");
   document.querySelector("#accordion").classList.add("hidden");
-  
-  console.log(answersValue);
+
+  if (answersValue >= 8) {
+    resultsTitle.innerText = "WoodWork";
+    resultsText.innerText = "You an excitable person always jumping onto the latest thing. Perhaps you've dabbled in many languages, or are taking this quiz itself is an impulse. Either way, WoodWork is right for you. Simultaneously the lowest and highest-level programming language possible, it is versatile in ways that moral minds struggle to understand. The only trouble you may encounter is that this language doesn't actually exist yet. Luckily, that just means you have something to look forward to!";
+  } else if (answersValue >= 4) {
+    resultsTitle.innerText = "HTML, CSS, and Javascript";
+    resultsText.innerText = "You are a middle of the road individual, who's just looking for a useful language to immerse themselves in. You might be talented at other thing such as literary analysis or an interment and are looking to round out your skillset. Perhaps you have a strong deadpan sense of humor and enjoy creating and consuming media with sensibilities leaning towards surreal. Unfortunately, seeing as There Can Only Be One, you are obligated find me and engage in a duel to the death. Sorry, I don't make the rules.";
+  } else if (answersValue >= 0) {
+    resultsTitle.innerText = "Assembly Language";
+    resultsText.innerText = "You are a stubborn person who hates change. Frankly, you think the advent of computers was bad for society, but you're interested in programming them anyway. You much prefer to see your 'code' instigate noticeable physical change in the world, which would be exceptionally difficult to achieve meaningfully in ASM. This is good, because you seem to enjoy being miserable.";
+  } else {
+    resultsTitle.innerText = "Something Went Wrong";
+    resultsText.innerText = "Try again later";
+  }
   answersValue = 0;
 }
 
@@ -90,7 +104,7 @@ function formReset() {
     shownQuestion.classList.remove("show");
   }
   document.querySelector("#collapseOne").classList.add("show");
-  
+
   //Show form
   document.querySelector("#result-card").classList.add("hidden");
   document.querySelector("#accordion").classList.remove("hidden");
