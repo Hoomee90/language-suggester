@@ -1,6 +1,6 @@
 //Business Logic
 
-let totalValue = 0;
+let answersValue = 0;
 
 function getRange(value) {
   const thresholds = [85, 170, 255];
@@ -32,7 +32,7 @@ function hexToRGB(hex) {
 
 function colorSubmissionHandler(colorHex) {
   const colorRGB = hexToRGB(colorHex);
-  totalValue += getColorBucket(colorRGB);
+  answersValue += getColorBucket(colorRGB);
 } 
 
 function radioSubmissionHandler(radios) {
@@ -41,7 +41,7 @@ function radioSubmissionHandler(radios) {
   radios.forEach(output => {
     radioValue += parseInt(output.value);
   })
-  totalValue += radioValue;
+  answersValue += radioValue;
 }
 
 //UI Logic
@@ -63,15 +63,26 @@ function collapseHandler() {
   })
 }
 
+function showResults() {
+  document.querySelector("#result-card").classList.remove("hidden");
+  document.querySelector("#accordion").classList.add("hidden");
+  
+  console.log(answersValue);
+}
+
 function formReset() {
   document.querySelector("#color").value = "#000000";
   document.querySelector("#thoughts").innerHTML = "";
-  totalValue = 0;
+  document.querySelector("#result-card").classList.add("hidden");
+  document.querySelector("#accordion").classList.remove("hidden");
+
+  answersValue = 0;
 }
 
 window.addEventListener("load", function() {
   const form = document.querySelector("form");
-  
+  const resetButton = document.querySelector("#reset-button")
+
   collapseHandler();
   form.addEventListener("submit", function (event){
     event.preventDefault();
@@ -80,9 +91,9 @@ window.addEventListener("load", function() {
 
     colorSubmissionHandler(colorInput);
     radioSubmissionHandler(radioInput);
-
-    console.log(totalValue);
-
+    showResults();
+  })
+  resetButton.addEventListener("click", function() {
     formReset();
   })
 })
