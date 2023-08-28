@@ -2,9 +2,9 @@
 
 function getRange(value) {
   const thresholds = [85, 170, 255];
-  if (value <= thresholds[0]) return "low";
-  if (value <= thresholds[1]) return "med";
-  if (value <= thresholds[2]) return "high";
+  if (value <= thresholds[0]) return 0;
+  if (value <= thresholds[1]) return 1;
+  if (value <= thresholds[2]) return 2;
 }
 
 function getColorBucket(RGB) {
@@ -14,7 +14,7 @@ function getColorBucket(RGB) {
   const gRange = getRange(g);
   const bRange = getRange(b);
 
-  return rRange + "-" + gRange + "-" + bRange;
+  return rRange + gRange + bRange;
 }
 
 function hexToRGB(hex) {
@@ -30,22 +30,20 @@ function hexToRGB(hex) {
 
 function colorSubmissionHandler(colorHex) {
   const colorRGB = hexToRGB(colorHex);
-  const colorBucket = getColorBucket(colorRGB);
-  //TODO: Do something with the colorBucket
-  console.log(colorBucket);
+  return getColorBucket(colorRGB);
 } 
 
-function radioSubmissionHandler() {
-  const Alloutput = document.querySelectorAll("input:checked");
-  let answersValue = 0;
+function radioSubmissionHandler(radios) {
+  let radioValue = 0;
   
-  Alloutput.forEach(output => {
-    answersValue += parseInt(output.value);
+  radios.forEach(output => {
+    radioValue += parseInt(output.value);
   })
-  console.log(answersValue);
+  return radioValue;
 }
 
 //UI Logic
+
 function collapseHandler() {
   const buttons = document.querySelectorAll(".card-header > button");
   buttons.forEach(button => {
@@ -70,8 +68,11 @@ window.addEventListener("load", function() {
   form.addEventListener("submit", function (event){
     event.preventDefault();
     const colorInput = document.querySelector("#color").value;
+    const radioInput = document.querySelectorAll("input:checked");
 
-    colorSubmissionHandler(colorInput);
-    radioSubmissionHandler();
+    const colorValue = colorSubmissionHandler(colorInput);
+    const radioValue = radioSubmissionHandler(radioInput);
+
+    console.log(colorValue, radioValue);
   })
 })
