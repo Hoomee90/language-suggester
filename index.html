@@ -7,7 +7,7 @@
   <title>Programming Language Suggester</title>
 </head>
 <body>
-  <div class="container-fluid">
+  <div class="container">
     <div class="jumbotron">
       <h1>The Programming Language Quiz</h1>
       <p>Which one is right for you?</p>
@@ -126,15 +126,15 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block mt-3 btn-lg">Submit</button>
+        <button type="submit" class="btn btn-outline-success btn-block mt-3 btn-lg">Submit</button>
       </form>
     </div>
     <div id="result-card" class="hidden">
       <div class="card">
-        <h3 class="card header p-1">Your Result is <span id="result-title"></span></h3>
-        <p class="card-text pl-2 pb-1" id="result-text">Ser Amet</p>
+        <h3 class="card header p-2" id="result-title"></h3>
+        <p class="card-text pr-1 pl-2 pb-2" id="result-text"></p>
       </div>
-      <button type="button" class="btn btn-primary btn-block mt-3 btn-lg" id="reset-button">Reset</button>
+      <button type="button" class="btn btn-outline-danger btn-block mt-3 btn-lg" id="reset-button">Reset</button>
     </div>
   </div>
 </body>
