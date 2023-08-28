@@ -7,7 +7,7 @@
   <title>Programming Language Suggester</title>
 </head>
 <body>
-  <div class="container">
+  <div class="container bg-grey">
     <div class="jumbotron">
       <h1>The Programming Language Quiz</h1>
       <p>Which one is right for you?</p>
@@ -15,8 +15,8 @@
     <div id="accordion" class="">
       <form>
         <div class="card">
-          <div class="card-header">
-              <button type="button" class="btn btn-block" data-target="#collapseOne">
+          <div class="card-header bg-dark">
+              <button type="button" class="btn btn-dark btn-block" data-target="#collapseOne">
                 <h5>Question One</h5>
               </button>
           </div>
@@ -44,7 +44,7 @@
             </div>
           </div>
           <div class="card-header">
-            <button type="button" class="btn btn-block" data-target="#collapseTwo">
+            <button type="button" class="btn btn-block btn-light" data-target="#collapseTwo">
               <h5>Question Two</h5>
             </button>
           </div>
@@ -71,8 +71,8 @@
               </div>
             </div>
           </div>
-          <div class="card-header">
-            <button type="button" class="btn btn-block" data-target="#collapseThree">
+          <div class="card-header bg-dark">
+            <button type="button" class="btn btn-block btn-dark" data-target="#collapseThree">
               <h5>Question Three</h5>
             </button>
           </div>
@@ -97,8 +97,8 @@
               </div>
             </div>
           </div>
-          <div class="card-header">
-            <button type="button" class="btn btn-block" data-target="#collapseFive">
+          <div class="card-header bg-dark">
+            <button type="button" class="btn btn-block btn-dark" data-target="#collapseFive">
               <h5>Question Five</h5>
             </button>
           </div>
@@ -130,8 +130,8 @@
       </form>
     </div>
     <div id="result-card" class="hidden">
-      <div class="card">
-        <h3 class="card header p-2" id="result-title"></h3>
+      <div class="card text-light bg-dark">
+        <h3 class="card header bg-dark p-2" id="result-title"></h3>
         <p class="card-text pr-1 pl-2 pb-2" id="result-text"></p>
       </div>
       <button type="button" class="btn btn-outline-danger btn-block mt-3 btn-lg" id="reset-button">Reset</button>

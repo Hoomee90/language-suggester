@@ -1,0 +1,11 @@
+.hidden {
+  display: none;
+}
+
+body {
+  background-color:#1c2f54;
+}
+
+.card-body {
+  background-color:#b1b1c7;
+}
