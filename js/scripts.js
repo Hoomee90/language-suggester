@@ -1,5 +1,7 @@
 //Business Logic
 
+let totalValue = 0;
+
 function getRange(value) {
   const thresholds = [85, 170, 255];
   if (value <= thresholds[0]) return 0;
@@ -30,7 +32,7 @@ function hexToRGB(hex) {
 
 function colorSubmissionHandler(colorHex) {
   const colorRGB = hexToRGB(colorHex);
-  return getColorBucket(colorRGB);
+  totalValue += getColorBucket(colorRGB);
 } 
 
 function radioSubmissionHandler(radios) {
@@ -39,7 +41,7 @@ function radioSubmissionHandler(radios) {
   radios.forEach(output => {
     radioValue += parseInt(output.value);
   })
-  return radioValue;
+  totalValue += radioValue;
 }
 
 //UI Logic
@@ -61,8 +63,14 @@ function collapseHandler() {
   })
 }
 
+function formReset() {
+  document.querySelector("#color").value = "#000000";
+  document.querySelector("#thoughts").innerHTML = "";
+  totalValue = 0;
+}
+
 window.addEventListener("load", function() {
-  const form = this.document.querySelector("form");
+  const form = document.querySelector("form");
   
   collapseHandler();
   form.addEventListener("submit", function (event){
@@ -70,9 +78,11 @@ window.addEventListener("load", function() {
     const colorInput = document.querySelector("#color").value;
     const radioInput = document.querySelectorAll("input:checked");
 
-    const colorValue = colorSubmissionHandler(colorInput);
-    const radioValue = radioSubmissionHandler(radioInput);
+    colorSubmissionHandler(colorInput);
+    radioSubmissionHandler(radioInput);
 
-    console.log(colorValue, radioValue);
+    console.log(totalValue);
+
+    formReset();
   })
 })
