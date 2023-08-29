@@ -3,10 +3,11 @@
 let answersValue = 0;
 
 function getRange(value) {
+  //Turn a number less than 256 into one of three values
   const thresholds = [85, 170, 255];
   if (value <= thresholds[0]) return 0;
   if (value <= thresholds[1]) return 1;
-  if (value <= thresholds[2]) return 2;
+  if (value <= thresholds[2]) return 1.5;
 }
 
 function getColorBucket(RGB) {
@@ -48,9 +49,9 @@ function radioSubmissionHandler(radios) {
 
 function collapseHandler() {
   const buttons = document.querySelectorAll(".card-header > button");
+  //Add an event listener to every accordion button to show/hide cards
   buttons.forEach(button => {
     const target = document.querySelector(button.dataset.target);
-    
     button.addEventListener("click", function() {
       const toHide = document.querySelector(".show")
       if (toHide) {
@@ -69,12 +70,12 @@ function showResults() {
   document.querySelector("#result-card").classList.remove("hidden");
   document.querySelector("#accordion").classList.add("hidden");
 
-  if (answersValue >= 8) {
+  if (answersValue >= 7.5) {
     resultsTitle.innerText = "WoodWork";
-    resultsText.innerText = "You an excitable person always jumping onto the latest thing. Perhaps you've dabbled in many languages, or are taking this quiz itself is an impulse. Either way, WoodWork is right for you. Simultaneously the lowest and highest-level programming language possible, it is versatile in ways that moral minds struggle to understand. The only trouble you may encounter is that this language doesn't actually exist yet. Luckily, that just means you have something to look forward to!";
+    resultsText.innerText = "You an excitable person always jumping onto the latest thing. Perhaps you've dabbled in many languages, or are taking this quiz itself is an impulse. Either way, WoodWork is right for you. Simultaneously the lowest and highest-level programming language possible, it is versatile in ways that isolated minds struggle to comprehend. The only trouble you may encounter is that this language doesn't actually exist yet. Luckily, that just means you have something to look forward to!";
   } else if (answersValue >= 4) {
     resultsTitle.innerText = "HTML, CSS, and Javascript";
-    resultsText.innerText = "You are a middle of the road individual, who's just looking for a useful language to immerse themselves in. You might be talented at other thing such as literary analysis or an interment and are looking to round out your skillset. Perhaps you have a strong deadpan sense of humor and enjoy creating and consuming media with sensibilities leaning towards surreal. Unfortunately, seeing as There Can Only Be One, you are obligated find me and engage in a duel to the death. Sorry, I don't make the rules.";
+    resultsText.innerText = "You are a middle of the road individual, who's just looking for a useful language to immerse themselves in. You might be talented at other things such as literary analysis or an interment and are looking to round out your skillset. Perhaps you have a strong deadpan sense of humor and enjoy creating and consuming media with sensibilities leaning towards surreal. Unfortunately, seeing as There Can Only Be One, you are obligated find me and engage in a duel to the death. Sorry, I don't make the rules.";
   } else if (answersValue >= 0) {
     resultsTitle.innerText = "Assembly Language";
     resultsText.innerText = "You are a stubborn person who hates change. Frankly, you think the advent of computers was bad for society, but you're interested in programming them anyway. You much prefer to see your 'code' instigate noticeable physical change in the world, which would be exceptionally difficult to achieve meaningfully in ASM. This is good, because you seem to enjoy being miserable.";
@@ -112,7 +113,7 @@ function formReset() {
 
 window.addEventListener("load", function() {
   const form = document.querySelector("form");
-  const resetButton = document.querySelector("#reset-button")
+  const resetButton = document.querySelector("#reset-button");
 
   collapseHandler();
   form.addEventListener("submit", function (event){
