@@ -3,9 +3,32 @@
 }
 
 body {
-  background-color:#1c2f54;
+  background-color:#a9bce2;
 }
 
 .card-body {
-  background-color:#b1b1c7;
+  background-color:#edb1b1;
+}
+
+button:first-child, #result-title {
+  font-variant: small-caps;
+}
+
+.questionLabel, p {
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+.form-check-label {
+  text-shadow: 0.5px 0.5px 1.5px rgba(255, 255, 255, 0.613);
+  font-weight: bold;
+}
+
+.btn-outline-success, .btn-outline-danger {
+  border-width: 2px;
+}
+
+#result-text {
+  line-height: 2em;
 }
